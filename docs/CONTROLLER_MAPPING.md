@@ -1,61 +1,63 @@
-# Controller Mapping / خريطة التحكم
+# خريطة التحكم وأوامر Serial
 
-The Python bridge reads a wired PS1-style controller exposed to pygame as a joystick and sends one ASCII byte at a time to the Uno at **9600 baud**. Default raw pygame mapping is conventional but controller-dependent; inspect your device with `python scripts/bridge.py --list-controllers` and adjust command-line indices if needed.
+يقرأ جسر Python ذراعًا سلكيًا يظهر في pygame كعصا تحكم، ثم يرسل إلى Arduino Uno حرف ASCII واحدًا في كل مرة بسرعة **9600 baud**. أرقام المحاور والأزرار تختلف من ذراع إلى آخر؛ اطبع بيانات جهازك باستخدام `python scripts/bridge.py --list-controllers` قبل اختيار الأرقام.
 
-## Default physical mapping
+## التعيين الافتراضي للذراع
 
-| Input | Character sent | Firmware action |
+| الإدخال | الحرف المرسل | ما يفعله firmware |
 |---|---|---|
-| Left stick up | `F` | Drive both motors forward at `currentPWM`, unless the front-distance condition blocks it |
-| Left stick down | `B` | Drive both motors backward |
-| Left stick left | `L` | Run only the left motor; this is not differential steering |
-| Left stick right | `R` | Run only the right motor; this is not differential steering |
-| Left stick neutral | `S` | Stop both motor channels |
-| D-pad left / right | `C` / lowercase `c` | Continuous counter-clockwise / clockwise spin |
-| Right stick up / right / down / left | `1` / `2` / `3` / `4` | Play the associated tone sequence; vertical wins on diagonal inputs |
-| R3 / right-stick button (default button index 9) | `H` | 1 kHz, 150 ms horn tone |
-| Left / right bumper (default indices 4 / 5) | `<` / `>` | Counter-clockwise / clockwise spin for a fixed 200 ms, then stop; this is not a calibrated 45° turn |
-| Optional `--bind COMMAND=BUTTON` | Selected one-shot character | Bind `^`, `V`, `J`, `+`, `-`, `*`, `/`, or another one-shot action to a local button index |
+| العصا اليسرى لأعلى | `F` | تشغيل المحركين إلى الأمام؛ يتوقف فقط عند تحقق عتبة المسافة الأمامية الحالية |
+| العصا اليسرى لأسفل | `B` | تشغيل المحركين إلى الخلف |
+| العصا اليسرى لليسار | `L` | تشغيل محرك واحد فقط؛ ليس توجيهًا تفاضليًا كاملًا |
+| العصا اليسرى لليمين | `R` | تشغيل المحرك الآخر فقط؛ ليس توجيهًا تفاضليًا كاملًا |
+| العصا اليسرى في المنتصف | `S` | إيقاف قناتي المحركات |
+| D-pad يسار / يمين | `C` / `c` بحرف صغير | دوران مستمر عكس/مع عقارب الساعة |
+| العصا اليمنى: أعلى / يمين / أسفل / يسار | `1` / `2` / `3` / `4` | تشغيل النمط الصوتي المقابل؛ الحركة العمودية لها الأولوية في الإدخال القطري |
+| R3 / زر العصا اليمنى (الافتراضي رقم 9) | `H` | زمارة 1000 Hz لمدة 150 ms |
+| الزر الأيسر / الأيمن العلوي (رقما 4 / 5 افتراضيًا) | `<` / `>` | دوران محدد 200 ms ثم توقف؛ ليس دورانًا معايرًا بزاوية 45° |
+| `--bind=COMMAND=BUTTON` اختياري | حرف أمر يختاره المستخدم | ربط `^` أو `V` أو `J` أو `+` أو `-` أو `*` أو `/` أو أمر مفرد آخر برقم زر محلي |
 
-Stick axes default to left X/Y = 0/1 and right X/Y = 2/3, with a 0.22 deadzone. Change them with `--left-x`, `--left-y`, `--right-x`, and `--right-y`. Default D-pad hat index is 0. The bridge favors vertical direction on diagonals. It releases movement by sending `S` when the stick/keys return to neutral.
+محاور العصا الافتراضية: X/Y اليسرى `0/1` واليمنى `2/3`، ومنطقة حياد `0.22`. يمكن تعديلها بخيارات `--left-x` و`--left-y` و`--right-x` و`--right-y`. رقم D-pad الافتراضي 0. عند الضغط القطري يفضل الجسر الاتجاه العمودي. يرسل `S` عند عودة الحركة إلى الحياد.
 
-Example optional bindings (button indexes vary by controller):
+مثال لربط أوامر اختيارية؛ أرقام الأزرار تختلف حسب الجهاز:
 
 ```bash
-python scripts/bridge.py --port COM3 \\
-  --bind=^=6 --bind=V=7 --bind=J=8 \\
-  --bind=+=0 --bind=-=1 --bind='*=2' --bind=/=3
+python scripts/bridge.py --port COM3 --bind=^=6 --bind=V=7 --bind=J=8 --bind=+=0 --bind=-=1 --bind='*=2' --bind=/=3
 ```
 
-Keyboard fallback when the pygame window is focused: arrow keys send movement, Space sends `S`, Q/E hold `C`/`c`, number keys 1–4 and `h` trigger tones, and `+`, `-`, `*`, `/`, `^`, `v`, `j`, `<`, `>` trigger one-shot commands. A one-shot request is bracketed by stop bytes; due to the firmware’s blocking delays and lack of acknowledgements, exact timing cannot be guaranteed.
+## التحكم بلوحة المفاتيح
 
-## Firmware character table
+عندما تكون نافذة pygame نشطة: الأسهم للحركة، Space للتوقف `S`، وQ/E للدوران `C`/`c`. الأرقام 1–4 والحرف `h` للنغمات. المفاتيح `+` و`-` و`*` و`/` و`^` و`v` و`j` و`<` و`>` ترسل أوامر مفردة. يحاول الجسر إحاطة بعض أوامر اللحظة القصيرة بحروف توقف، لكن لا يوجد تأكيد استلام من firmware؛ لذلك لا يمكن ضمان التوقيت الدقيق.
 
-| Character | Firmware action |
+## جدول الأحرف التي يفهمها firmware
+
+| الحرف | الفعل في المصدر الحالي |
 |---|---|
-| `F` | `driveForward()`; blocked only when distance is below 15 cm |
-| `B` | `driveBackward()` |
-| `L` | Energize left motor only |
-| `R` | Energize right motor only |
-| `S` | Stop both motors |
-| `C` | Continuous counter-clockwise spin |
-| `c` | Continuous clockwise spin on USB serial |
-| `<` / `>` | Counter-clockwise / clockwise spin for 200 ms, then stop |
-| `^` | If smoothed pitch value is above +15, drive forward at PWM 255 for 150 ms; ignored otherwise. The HC‑SR04 cutoff also applies to this command. |
-| `V` | If smoothed pitch value is below -15, drive backward at PWM 255 for 150 ms |
-| `J` | Set PWM to 100 and drive forward; stopped by the distance check below 15 cm |
-| `H` | 1 kHz horn, 150 ms |
-| `1` | Two-note 500/650 Hz tone |
-| `2` | Short repeated notes followed by 698/880 Hz notes |
-| `3` | 200 Hz tone, 400 ms |
-| `4` | Three alternating 800/1200 Hz siren cycles |
-| `+` / `-` | Adjust speed level by +2 / -2, bounded 1–10 |
-| `*` / `/` | Set speed level to 10 / decrement by 1 |
+| `F` | تقدم؛ يمنع فقط عندما تكون قراءة المسافة أقل من 15 cm |
+| `B` | رجوع |
+| `L` | تشغيل المحرك الأيسر فقط |
+| `R` | تشغيل المحرك الأيمن فقط |
+| `S` | إيقاف المحركين |
+| `C` | دوران مستمر عكس عقارب الساعة |
+| `c` | دوران مستمر مع عقارب الساعة في مسار USB الخاص بـUno |
+| `<` / `>` | دوران عكس/مع عقارب الساعة لمدة 200 ms ثم توقف |
+| `^` | إذا تجاوزت قيمة الميل المملّسة +15، تقدم بسرعة PWM=255 لمدة 150 ms؛ يخضع لحد المسافة الأمامي |
+| `V` | إذا كانت قيمة الميل أقل من -15، رجوع بسرعة PWM=255 لمدة 150 ms |
+| `J` | ضبط PWM على 100 والتقدم؛ يخضع لحد المسافة الأمامي |
+| `H` | زمارة 1000 Hz لمدة 150 ms |
+| `1` | نغمتا 500 ثم 650 Hz |
+| `2` | نغمات قصيرة 523 Hz ثم 698 و880 Hz |
+| `3` | نغمة 200 Hz لمدة 400 ms |
+| `4` | ثلاث دورات من 800/1200 Hz |
+| `+` / `-` | زيادة/خفض مستوى السرعة بمقدار 2 ضمن 1–10 |
+| `*` / `/` | ضبط السرعة على 10 / خفضها درجة واحدة |
 
-The speed adjustment function runs each time the main loop processes the stored command. The bridge emits these as short pulses, but there is no firmware acknowledgement; do not hold a speed command expecting a single increment.
+أوامر السرعة تُعالج كل مرة يمر فيها الأمر المخزن عبر حلقة البرنامج. يرسل الجسر نبضة قصيرة، لكن لا يوجد إقرار من المتحكم؛ لا تمسك أمر زيادة السرعة على أساس أنه سينفذ مرة واحدة فقط.
 
-## Exact case behavior
+## حالة الأحرف في المصدر
 
-- **USB Serial (Uno path):** CR and LF are ignored. Lowercase `c` is preserved as clockwise spin; other characters pass through `toupper()`, so `h`→`H`, `v`→`V`, and lowercase letters such as `f`→`F`.
-- **ESP32 Bluetooth path in the source:** every non-newline byte is uppercased. Therefore lowercase `c` becomes `C` and cannot select the USB path’s clockwise `c` behavior. This optional path is not built or validated here.
-- The source recognizes a one-character command, not a framed/checksummed protocol. It has no acknowledgement, sequence number, or firmware-side timeout.
+- **USB Serial على Uno:** يتجاهل CR وLF. يحافظ على `c` الصغيرة للدوران مع عقارب الساعة؛ يحوّل الأحرف الأخرى عبر `toupper()`، مثل `h` إلى `H` و`v` إلى `V` و`f` إلى `F`.
+- **مسار Bluetooth الشرطي في المصدر:** يحوّل كل حرف غير سطر جديد إلى حرف كبير؛ لذلك تتحول `c` إلى `C` ولا تعني الدوران مع عقارب الساعة كما في مسار USB. هذا المسار غير مبني أو مختبر هنا.
+- البروتوكول حرف واحد بلا تأطير أو checksum أو إقرار أو رقم تسلسلي أو مهلة توقف داخل firmware.
+
+لشرح الجسر نفسه راجع [`scripts/README_AR.md`](../scripts/README_AR.md). ولحدود التوقف الآمن راجع [السلامة والاختبار](SAFETY_AND_TESTING.md).

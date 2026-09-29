@@ -1,56 +1,64 @@
-# Wiring and Hardware / التوصيلات والمكونات
+# التوصيلات والمكونات
 
-This document separates **connections referenced by the current source** from components reserved for later integration. Pin names are for an **Arduino Uno R3 only**; do not reuse this table for an ESP32.
+هذه الوثيقة تفصل بين التوصيلات التي يذكرها البرنامج حاليًا وبين المكونات التي لم تُنفذ وظائفها بعد. جدول الأرجل التالي خاص بلوحة **Arduino Uno R3**؛ لا تستخدمه لتوصيل ESP32.
 
-## Current Arduino Uno pin map
+## خريطة أرجل Arduino Uno الحالية
 
-| Function | Arduino Uno pin | Firmware use | Notes |
+| الوظيفة | رجل Uno | الاستخدام في البرنامج | ملاحظة |
 |---|---:|---|---|
-| L298N ENA | D5 | `analogWrite()` left-channel PWM | PWM output |
-| L298N IN1 / IN2 | D6 / D7 | Left motor direction | Direction truth table is in the source |
-| L298N IN3 / IN4 | D8 / D9 | Right motor direction | Direction is reversed in `driveForward()` to align wheel rotation |
-| L298N ENB | D10 | `analogWrite()` right-channel PWM | PWM output |
-| LED 1 / 2 / 3 / 4 | D11 / D12 / D13 / D4 | Outputs initialized; current `flashLEDs()` toggles LED1 and LED4 only | Use a suitable series resistor, e.g. 220–330 Ω, for each LED |
-| Passive buzzer | A0 | `tone()` output | The source sets `BUZZER_PIN` to A0 |
-| HC‑SR04 TRIG / ECHO | D2 / D3 | `pulseIn()` distance measurement | Echo timeout is 25 ms; Uno input is 5 V tolerant |
-| MPU6050 SDA / SCL | A4 / A5 | I²C, address `0x68` | Uno hardware I²C pins; INT is not used |
-| IR receiver output | A1 | `pinMode(INPUT)` only | No decoder, command mapping, or validated signal level yet |
-| USB serial | D0/D1 via board USB | `Serial.begin(9600)` | Connect PC through the Uno USB interface; close serial monitor before bridge |
+| L298N ENA | D5 | PWM لقناة المحرك الأيسر | خرج PWM |
+| L298N IN1 / IN2 | D6 / D7 | اتجاه المحرك الأيسر | راجع جدول الاتجاه أدناه |
+| L298N IN3 / IN4 | D8 / D9 | اتجاه المحرك الأيمن | اتجاه القناة معكوس في دالة التقدم لتوافق دوران العجلة |
+| L298N ENB | D10 | PWM لقناة المحرك الأيمن | خرج PWM |
+| LEDs 1 / 2 / 3 / 4 | D11 / D12 / D13 / D4 | تهيأ كمخارج؛ حاليًا تتغير LED1 وLED4 فقط | مقاومة مناسبة على التوالي لكل LED، مثل 220–330 Ω |
+| البازر السلبي | A0 | خرج `tone()` | يعرف المصدر `BUZZER_PIN` على A0 |
+| HC‑SR04 TRIG / ECHO | D2 / D3 | قياس المسافة عبر `pulseIn()` | مهلة Echo مقدارها 25 ms |
+| MPU6050 SDA / SCL | A4 / A5 | I²C عند العنوان `0x68` | رجل INT غير مستخدمة |
+| خرج مستقبل IR | A1 | `pinMode(INPUT)` فقط | لا يوجد فك إشارة أو ربط أزرار |
+| USB Serial | D0 / D1 عبر USB | `Serial.begin(9600)` | أغلق Serial Monitor قبل تشغيل الجسر على المنفذ نفسه |
 
-### Motor direction reference
+## اتجاهات المحركات في البرنامج
 
-| Firmware action | Left motor IN1/IN2 | Right motor IN3/IN4 | PWM |
+| الفعل | المحرك الأيسر IN1/IN2 | المحرك الأيمن IN3/IN4 | PWM |
 |---|---|---|---|
-| Forward | HIGH / LOW | LOW / HIGH | `currentPWM` on both channels |
-| Backward | LOW / HIGH | HIGH / LOW | `currentPWM` on both channels |
-| Clockwise spin | HIGH / LOW | HIGH / LOW | `currentPWM` on both channels |
-| Counter-clockwise spin | LOW / HIGH | LOW / HIGH | `currentPWM` on both channels |
-| Stop | LOW / LOW | LOW / LOW | 0 on both channels |
-| `L` / `R` | One channel energized | Other channel stopped | `currentPWM` on one channel |
+| تقدم | HIGH / LOW | LOW / HIGH | `currentPWM` على القناتين |
+| رجوع | LOW / HIGH | HIGH / LOW | `currentPWM` على القناتين |
+| دوران مع عقارب الساعة | HIGH / LOW | HIGH / LOW | `currentPWM` على القناتين |
+| دوران عكس عقارب الساعة | LOW / HIGH | LOW / HIGH | `currentPWM` على القناتين |
+| توقف | LOW / LOW | LOW / LOW | صفر على القناتين |
+| `L` / `R` | تشغيل قناة واحدة | القناة الأخرى متوقفة | `currentPWM` على قناة واحدة |
 
-Verify motor orientation with the wheels raised before placing the chassis on the floor. The words “left” and “right” describe the firmware channels; wiring orientation may differ on a physical chassis.
+ارفع العجلات عن الأرض عند فحص الاتجاه قبل وضع الهيكل على الأرض. كلمتا «يسار» و«يمين» تصفان قناتي البرنامج؛ قد يختلف اتجاه الأسلاك الفعلي حسب تركيب المحركات.
 
-## Chassis and parts
+## الهيكل والمكونات المذكورة
 
-The stated chassis is four-wheeled: two DC motors drive the chassis and two passive caster wheels support it. The stated parts also include Arduino Uno R3, an ESP32 DevKit for a future transition, MPU6050, HC‑SR04, L298N dual H-bridge, passive buzzer, four red LEDs, an IR receiver, a three-cell 18650 battery pack, holder, and main power switch. Only the elements in the pin table are currently used as described by firmware; an IR receiver is initialized but not decoded.
+الهيكل الموصوف رباعي العجلات: محركان DC للقيادة وعجلتا دعم حرتان. المكونات المذكورة كذلك: Arduino Uno R3، ولوحة ESP32 DevKit للانتقال المستقبلي، MPU6050، HC‑SR04، جسر L298N، بازر سلبي، أربعة LEDs حمراء، مستقبل IR، حزمة ثلاث خلايا 18650 ومفتاح طاقة. وجود القطعة على الهيكل لا يعني أن البرنامج ينفذ وظيفتها؛ حالة كل جزء مبينة أدناه وفي [خريطة التحكم](CONTROLLER_MAPPING.md).
 
-## Power and electrical safety
+## الطاقة والسلامة الكهربائية
 
-- A 3-cell lithium-ion pack in series is nominally about 11.1 V and reaches 12.6 V when fully charged. Use a protected, correctly assembled/charged pack and a suitable charger; verify the exact cell and BMS ratings.
-- Power the motors through the L298N motor-supply input, using a supply within the exact module and motor ratings. Do not assume the L298N’s onboard regulator can safely power the Uno, ESP32, or sensors.
-- Use a regulated logic supply appropriate for the Uno and sensor breakout boards. Join grounds where required, but keep motor current paths away from sensitive sensor wiring.
-- Do not connect the raw battery pack to the Uno 5 V pin, MPU6050, or ESP32. Disconnect motor/battery power before changing wires.
-- Verify the MPU6050 breakout’s voltage and logic-level limits from its own documentation; breakout boards differ.
-- The Uno can accept a 5 V HC‑SR04 Echo signal. If an ESP32 is later used, its GPIO is not 5 V tolerant: add a correctly calculated divider/level shifter before Echo and check every other signal direction.
-- Use an accessible physical power switch/emergency cutoff. Software stop requests are not a substitute.
+- حزمة ثلاث خلايا ليثيوم-أيون على التوالي (3S) جهدها الاسمي المعتاد نحو 11.1 V وتصل إلى 12.6 V عند الشحن الكامل. تحقّق من الخلايا ودائرة الحماية والشاحن الفعلي؛ لا تعتمد على قيمة اسمية فقط.
+- غذِّ المحركات من مدخل محركات L298N ضمن حدود اللوحة والمحركات. لا تفترض أن منظم L298N المدمج مناسب لتغذية Uno أو ESP32 أو الحساسات.
+- استخدم مصدرًا منظمًا مناسبًا للمنطق والحساسات. اربط الأرضي المشترك عند الحاجة، وافصل مسارات تيار المحركات قدر الإمكان عن أسلاك الحساسات.
+- لا توصل جهد البطارية الخام إلى رجل 5 V في Uno أو إلى MPU6050 أو ESP32. افصل البطارية وطاقة المحركات قبل تعديل الأسلاك.
+- تختلف لوحات MPU6050 الفرعية في تنظيم الجهد ومستويات الإشارة؛ راجع مواصفات اللوحة التي لديك.
+- يمكن لمدخل Uno استقبال Echo بجهد 5 V. أما ESP32 فمداخله ليست متحملة لـ5 V؛ يلزم خافض مستوى/مقسم جهد محسوب لإشارة Echo، مع التحقق من بقية الإشارات.
+- وفّر مفتاح فصل طاقة فعليًا يمكن الوصول إليه. أمر التوقف البرمجي ليس بديلًا عنه.
 
-## Future components / خارطة مكونات المرحلة التالية
+## ما تنفذه الحساسات حاليًا
 
-- **HC‑SR04:** this is now read by the supplied firmware on D2/D3 and stops selected forward commands below 15 cm. It is not full obstacle avoidance; a timed-out echo is assigned 999 cm (treated as clear), reverse/turning paths are not protected, and stopping distance depends on the chassis.
-- **IR receiver:** A1 is configured as input, but the source does not decode IR pulses or map remote buttons. Do not expect IR control yet.
-- **MPU6050/PID:** I²C is initialized and two acceleration bytes are smoothed into a rough value used by tilt actions. There is no continuous PID self-balancing controller or validated calibration routine.
-- **Mode switch:** no mode switch pin or mode-selection behavior appears in the source.
+### HC‑SR04
 
-## ESP32 transition — not supported by this pin map
+يقرأ البرنامج TRIG على D2 وECHO على D3، بمهلة `pulseIn()` مقدارها 25 ms. إذا لم يصل Echo، يضع المسافة 999 cm (أي يتعامل معها كأنها طريق مفتوح). شرط أقل من 15 cm يوقف أوامر `F` و`J` و`^` فقط. هذه **عتبة أمامية محدودة وليست تجنبًا شاملًا للعوائق**؛ لا تغطي الرجوع أو الدوران أو كل حركة، وتتغير مسافة التوقف حسب الهيكل والسرعة والسطح.
 
-The source’s pin macros (`D5`–`D13`, `A0`, `A1`, `D2`, `D3`) are Uno-specific. The optional `#ifdef ESP32` block starts a Bluetooth serial name, but this does not provide a validated ESP32 pin assignment or a separate tested PlatformIO environment. Several GPIOs numbered 6–11 are flash-connected on common ESP32 modules, and `A0` is not generally a suitable buzzer output. **Do not wire or power an ESP32 using the Uno table.** Select the exact board, create a separate verified pin map, account for 3.3 V logic, then test it as a separate port.
+### MPU6050
+
+يتصل عبر A4/A5 على `0x68`. يقرأ المصدر بايتين بدءًا من السجل `0x3B`، وهو `ACCEL_XOUT_H` وفق خريطة السجلات، رغم أن المتغير يسمى `rawAccelY`. يحوّل القيمة خطيًا إلى رقم يصفه البرنامج كزاوية تقريبية ويملّسها؛ لا توجد معايرة أو دمج جيروسكوب أو حلقة PID. لا تعتمد على هذا الرقم كزاوية جسم موثوقة.
+
+### مستقبل IR وLEDs
+
+- الرجل A1 مهيأة كمدخل فقط. لا يتضمن المصدر مكتبة IR أو التقاط أكواد الريموت أو تنفيذ أوامر منه.
+- تُهيأ أربعة مخارج LED؛ لكن المنطق الحالي يبدل LED1 وLED4 فقط عند مستوى سرعة معين. تحقق من المقاومة والتوصيل قبل التغذية.
+
+## ESP32: غير مدعوم بهذا الجدول
+
+تعريفات الأرجل في المصدر (`D5`–`D13` و`A0` و`A1` و`D2` و`D3`) مكتوبة لنسخة Uno الحالية. وجود جزء `#ifdef ESP32` يحدد اسم Bluetooth لا يوفر خريطة أرجل ولا بيئة PlatformIO مستقلة جرى اختبارها. كما أن GPIO6–GPIO11 متصل عادة بذاكرة الفلاش في وحدات ESP32 شائعة، ورجل A0 في الجدول ليست توصية خرج لبازر على ESP32. **لا تستخدم توصيلات Uno على ESP32.** اختر طراز اللوحة، وضع خريطة أرجل منفصلة ومدققة، واحسب مستويات 3.3 V قبل اختبارها.

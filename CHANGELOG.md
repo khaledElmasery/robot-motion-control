@@ -1,13 +1,13 @@
-# Changelog
+# سجل التغييرات
 
-All notable repository changes are recorded here. This project has not yet published a tagged release.
+هذا السجل يوثق التغييرات التي ظهرت في المستودع. لم يصدر إصدار موسوم (tag) بعد.
 
-## Unreleased — repository modernization
+## غير منشور — تنظيم وتوثيق
 
-- Replaced the prior imported project tree in the active repository with a clean Arduino Uno/PlatformIO layout; the earlier Git commit remains in history for recovery.
-- Added the **latest** user-provided firmware as `src/main.cpp`; only trailing whitespace was removed, with no logic, pin, hardware, or control-character changes. The earlier firmware snapshot is not used.
-- Added the pygame/pyserial USB bridge and documented its default axis/button assumptions and configurable bindings.
-- Added Uno wiring, controller mapping, safety/testing, setup, and roadmap documentation.
-- Clarified the implemented but limited HC‑SR04 cutoff, the unimplemented IR decoder and PID balance controller, serial-loss behavior, and Uno-only pin map.
-- Added PlatformIO monitor configuration, Python dependency pins, `.gitignore`, and GitHub issue templates.
-- No hardware validation or release tag was created as part of this update.
+- استبدال الصفحة الرئيسية بمرجع عربي يشرح هدف المشروع، تشغيله، وبنية الملفات.
+- ترجمة وثائق التوصيل والتحكم والسلامة إلى العربية، وإضافة فهرس للوثائق وشرح مستقل لنغمات البازر.
+- إضافة ملفي شرح داخل `src/` و`scripts/` لتوضيح وظيفة الملفات الموجودة من دون تعديل محتواها البرمجي.
+- إضافة دليل مساهمة وقالب Pull Request وقوالب عربية لبلاغات الأخطاء واقتراح الميزات.
+- توضيح أن قراءة MPU6050 تبدأ من السجل `0x3B` (محور X في خريطة الشريحة) رغم تسمية المتغير في المصدر `rawAccelY`، وأنها ليست زاوية ميل معايرة أو منظومة اتزان.
+- مراجعة أرشيف `Buzzer_Music.zip`: ملف `src/main.cpp` مطابق للنسخة الحالية بعد تجاهل اختلاف المسافات البيضاء؛ لم يتغير firmware أو bridge. استُبعد الجسر الأقدم وملفات البناء والمكتبات غير المستخدمة، كما استُبعد رسم Wokwi الذي يوصل البازر إلى D7 بينما يستخدم البرنامج A0.
+- لم تُجرَ اختبارات على روبوت فعلي، ولم تُضف رخصة استخدام؛ اختيار الرخصة يعود لمالك المشروع.

@@ -1,38 +1,44 @@
 ---
-name: Bug report
-about: Report a reproducible firmware, bridge, build, or documentation problem
-title: "[Bug]: "
+name: الإبلاغ عن مشكلة
+about: أبلغ عن خلل يمكن إعادة إنتاجه في firmware أو الجسر أو البناء أو التوثيق
+title: "[مشكلة]: "
 labels: bug
 assignees: ""
 ---
 
-## Summary
-Describe the problem clearly.
+## ملخص المشكلة
 
-## Environment
-- Firmware commit/version:
-- Board (exact model):
-- Operating system:
-- Python version:
-- PlatformIO version:
-- Controller model / pygame button and axis counts:
-- Wiring changes from `docs/WIRING_AND_HARDWARE.md`:
+اشرح ما الذي حدث باختصار.
 
-## Reproduction steps
+## بيئة التشغيل
+
+- إصدار/commit البرنامج:
+- اللوحة وطرازها بالتحديد:
+- نظام التشغيل:
+- إصدار Python:
+- إصدار PlatformIO:
+- طراز ذراع التحكم وعدد المحاور والأزرار الظاهر:
+- أي اختلاف في التوصيل عن `docs/WIRING_AND_HARDWARE.md`:
+
+## خطوات إعادة المشكلة
+
 1.
 2.
 3.
 
-## Expected behavior
-What did you expect?
+## السلوك المتوقع
 
-## Actual behavior
-What happened? Include relevant serial output or logs, with secrets removed.
+ما الذي كنت تتوقع حدوثه؟
 
-## Safety impact
-- Did a motor move unexpectedly? If yes, state which command and test setup.
-- Was the chassis restrained and the wheels raised?
-- Was the physical power cutoff available?
-- Did HC-SR04 report a valid distance, or did its Echo time out?
+## السلوك الفعلي
 
-> Do not include API tokens, Wi-Fi passwords, personal information, or unredacted device credentials. Do not reproduce a hazardous behavior around people or property.
+ماذا حدث بالفعل؟ أرفق مخرجات Serial أو سجلًا بعد إزالة الأسرار والبيانات الشخصية.
+
+## أثر المشكلة على السلامة
+
+- هل تحرك أي محرك دون توقع؟ اذكر الأمر وإعداد الاختبار.
+- هل كانت العجلات مرفوعة والهيكل مثبتًا؟
+- هل كان مفتاح فصل الطاقة متاحًا؟
+- هل أعطى HC‑SR04 مسافة، أم انتهت مهلة Echo؟
+
+> لا ترفق مفاتيح API أو كلمات مرور Wi‑Fi أو بيانات شخصية أو بيانات اعتماد غير منقحة. لا تعِد تجربة سلوك خطر قرب أشخاص أو ممتلكات.
