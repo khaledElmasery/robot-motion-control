@@ -64,7 +64,7 @@
 
 #else
 
-  // خريطة Arduino Uno R3. D9 مخصص لصوت Timer1؛ لذلك ENA/ENB هما D5/D6.
+  // خريطة Arduino Uno R3. ~9 مخصص لصوت Timer1؛ لذلك ENA/ENB هما ~5/~6.
   #define ENA_PIN 5
   #define ENB_PIN 6
   #define IN1_PIN 7
@@ -549,7 +549,7 @@ void setBuzzerFrequency ( uint16_t frequency )
   #endif
   writeBuzzerDuty ( );
 #else
-  // Timer1 Fast PWM mode 14, خرج OC1A على D9، مع Duty متغير من 0 إلى 50%.
+  // Timer1 Fast PWM mode 14, خرج OC1A على ~9، مع Duty متغير من 0 إلى 50%.
   uint32_t top = ( F_CPU / ( 8UL * ( uint32_t ) frequency ) ) - 1UL;
   if ( top > 65535UL ) top = 65535UL;
 
