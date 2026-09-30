@@ -13,7 +13,10 @@
 ## الفحوص التي أُجريت
 
 - [ ] `pio run -e uno`
+- [ ] `pio run -e esp32_bridge`
+- [ ] `pio run -e esp32_standalone`
 - [ ] `python scripts/bridge.py --self-test`
+- [ ] `python -m unittest discover -s tests -v`
 - [ ] `python -m py_compile scripts/bridge.py`
 - [ ] اختبار على عتاد حقيقي (اذكر اللوحة والمكونات)
 - [ ] لم أختبر العتاد، وذكرت ذلك بوضوح

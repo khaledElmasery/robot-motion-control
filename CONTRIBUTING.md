@@ -13,7 +13,10 @@
 
    ```bash
    pio run -e uno
+   pio run -e esp32_bridge
+   pio run -e esp32_standalone
    python scripts/bridge.py --self-test
+   python -m unittest discover -s tests -v
    python -m py_compile scripts/bridge.py
    ```
 
@@ -31,11 +34,12 @@
 
 ## بناء واختبار النسخة الحالية
 
-- Firmware: `pio run -e uno`.
+- Firmware: `pio run -e uno`, `pio run -e esp32_bridge`, and `pio run -e esp32_standalone`.
 - فحص جسر التحكم دون عتاد: `python scripts/bridge.py --self-test`.
+- اختبارات Python: `python -m unittest discover -s tests -v`.
 - فحص تركيب Python: `python -m py_compile scripts/bridge.py`.
 
-هذه الفحوص لا تثبت سلامة دائرة كهربائية أو روبوت فعلي. اتبع [دليل السلامة والاختبار](docs/SAFETY_AND_TESTING.md).
+هذه الفحوص لا تثبت سلامة دائرة كهربائية أو روبوت فعلي. اتبع [دليل السلامة والاختبار](docs/SAFETY_AND_TESTING.md) و[دليل مفتاح الوضع](docs/MODE_SWITCH_DIRECT_HYBRID_AR.md).
 
 ## حقوق إعادة الاستخدام
 
