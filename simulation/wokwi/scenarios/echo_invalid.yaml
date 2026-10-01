@@ -1,0 +1,23 @@
+name: Forward blocked when Echo is invalid
+version: 1
+author: Robot Motion Control
+steps:
+  - delay: 250ms
+  - write-serial: 'F'
+  - wait-serial: 'MOTION_BLOCKED: distance sensor invalid'
+  - expect-pin:
+      part-id: uno
+      pin: 7
+      expected: 0
+  - expect-pin:
+      part-id: uno
+      pin: 8
+      expected: 0
+  - expect-pin:
+      part-id: uno
+      pin: 10
+      expected: 0
+  - expect-pin:
+      part-id: uno
+      pin: A0
+      expected: 0
