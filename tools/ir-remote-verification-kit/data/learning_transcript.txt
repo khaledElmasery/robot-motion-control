@@ -1,0 +1,92 @@
+[2026-10-05T22:58:40+03:00] === Calibration session started ===
+[2026-10-05T22:58:40+03:00] PROMPT 1/45: POWER — زر التشغيل الأحمر بجوار MUTE
+[2026-10-05T22:58:51+03:00] MAPPED POWER: IR;protocol=NEC;address=0x00;command=0x1C;raw=0xE31CFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:58:53+03:00] PROMPT 2/45: MUTE — كتم الصوت
+[2026-10-05T22:58:56+03:00] MAPPED MUTE: IR;protocol=NEC;address=0x00;command=0x08;raw=0xF708FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:58:58+03:00] PROMPT 3/45: RED — الزر الأحمر
+[2026-10-05T22:59:01+03:00] MAPPED RED: IR;protocol=NEC;address=0x00;command=0x56;raw=0xA956FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:02+03:00] PROMPT 4/45: GREEN — الزر الأخضر
+[2026-10-05T22:59:04+03:00] MAPPED GREEN: IR;protocol=NEC;address=0x00;command=0x57;raw=0xA857FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:05+03:00] PROMPT 5/45: YELLOW — الزر الأصفر
+[2026-10-05T22:59:06+03:00] MAPPED YELLOW: IR;protocol=NEC;address=0x00;command=0x1F;raw=0xE01FFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:08+03:00] PROMPT 6/45: BLUE — الزر الأزرق
+[2026-10-05T22:59:09+03:00] MAPPED BLUE: IR;protocol=NEC;address=0x00;command=0x5B;raw=0xA45BFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:11+03:00] PROMPT 7/45: ZOOM — تكبير الصورة
+[2026-10-05T22:59:11+03:00] MAPPED ZOOM: IR;protocol=NEC;address=0x00;command=0x55;raw=0xAA55FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:13+03:00] PROMPT 8/45: SUB — الترجمة SUB
+[2026-10-05T22:59:14+03:00] MAPPED SUB: IR;protocol=NEC;address=0x00;command=0x5E;raw=0xA15EFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:15+03:00] PROMPT 9/45: TSHIFT — الإزاحة الزمنية T.SHIFT
+[2026-10-05T22:59:17+03:00] MAPPED TSHIFT: IR;protocol=NEC;address=0x00;command=0x51;raw=0xAE51FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:18+03:00] PROMPT 10/45: SOURCE — المصدر SOURCE
+[2026-10-05T22:59:19+03:00] MAPPED SOURCE: IR;protocol=NEC;address=0x00;command=0x59;raw=0xA659FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:21+03:00] PROMPT 11/45: TV_RADIO — TV/RADIO
+[2026-10-05T22:59:23+03:00] MAPPED TV_RADIO: IR;protocol=NEC;address=0x00;command=0x5A;raw=0xA55AFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:25+03:00] PROMPT 12/45: TTX_CC — TTX/CC
+[2026-10-05T22:59:26+03:00] MAPPED TTX_CC: IR;protocol=NEC;address=0x00;command=0x52;raw=0xAD52FF00;bits=32;candidate_label=DOWN_ARROW;map_status=UNVERIFIED_FOR_SG555
+[2026-10-05T22:59:28+03:00] PROMPT 13/45: FILELIST — قائمة الملفات FILELIST
+[2026-10-05T22:59:29+03:00] MAPPED FILELIST: IR;protocol=NEC;address=0x00;command=0x5D;raw=0xA25DFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:31+03:00] PROMPT 14/45: TIMER — المؤقت TIMER
+[2026-10-05T22:59:31+03:00] MAPPED TIMER: IR;protocol=NEC;address=0x00;command=0x5C;raw=0xA35CFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:33+03:00] PROMPT 15/45: PLAY — تشغيل الوسائط ▶
+[2026-10-05T22:59:33+03:00] MAPPED PLAY: IR;protocol=NEC;address=0x00;command=0x01;raw=0xFE01FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:35+03:00] PROMPT 16/45: PAUSE — إيقاف مؤقت ⏸
+[2026-10-05T22:59:37+03:00] MAPPED PAUSE: IR;protocol=NEC;address=0x00;command=0x5F;raw=0xA05FFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:38+03:00] PROMPT 17/45: STOP — إيقاف الوسائط ■
+[2026-10-05T22:59:42+03:00] MAPPED STOP: IR;protocol=NEC;address=0x00;command=0x19;raw=0xE619FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:43+03:00] PROMPT 18/45: RECORD — تسجيل ●
+[2026-10-05T22:59:44+03:00] MAPPED RECORD: IR;protocol=NEC;address=0x00;command=0x58;raw=0xA758FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:46+03:00] PROMPT 19/45: MENU — القائمة MENU
+[2026-10-05T22:59:46+03:00] MAPPED MENU: IR;protocol=NEC;address=0x00;command=0x18;raw=0xE718FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:48+03:00] PROMPT 20/45: EXIT — خروج EXIT
+[2026-10-05T22:59:49+03:00] MAPPED EXIT: IR;protocol=NEC;address=0x00;command=0x17;raw=0xE817FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T22:59:50+03:00] PROMPT 21/45: UP — السهم لأعلى ▲
+[2026-10-05T22:59:55+03:00] MAPPED UP: IR;protocol=NEC;address=0x00;command=0x1A;raw=0xE51AFF00;bits=32;candidate_label=RIGHT_ARROW;map_status=UNVERIFIED_FOR_SG555
+[2026-10-05T22:59:57+03:00] PROMPT 22/45: LEFT — السهم لليسار ◀
+[2026-10-05T23:00:02+03:00] MAPPED LEFT: IR;protocol=NEC;address=0x00;command=0x47;raw=0xB847FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:03+03:00] PROMPT 23/45: OK — الزر الأوسط OK
+[2026-10-05T23:00:04+03:00] MAPPED OK: IR;protocol=NEC;address=0x00;command=0x06;raw=0xF906FF00;bits=32;candidate_label=LEFT_ARROW;map_status=UNVERIFIED_FOR_SG555
+[2026-10-05T23:00:06+03:00] PROMPT 24/45: RIGHT — السهم لليمين ▶
+[2026-10-05T23:00:07+03:00] MAPPED RIGHT: IR;protocol=NEC;address=0x00;command=0x07;raw=0xF807FF00;bits=32;candidate_label=OK;map_status=UNVERIFIED_FOR_SG555
+[2026-10-05T23:00:08+03:00] PROMPT 25/45: DOWN — السهم لأسفل ▼
+[2026-10-05T23:00:10+03:00] MAPPED DOWN: IR;protocol=NEC;address=0x00;command=0x48;raw=0xB748FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:11+03:00] PROMPT 26/45: EPG — دليل البرامج EPG
+[2026-10-05T23:00:15+03:00] MAPPED EPG: IR;protocol=NEC;address=0x00;command=0x49;raw=0xB649FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:17+03:00] PROMPT 27/45: INFO — المعلومات INFO
+[2026-10-05T23:00:18+03:00] MAPPED INFO: IR;protocol=NEC;address=0x00;command=0x0A;raw=0xF50AFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:20+03:00] PROMPT 28/45: PREVIOUS_TRACK — المسار السابق ⏮
+[2026-10-05T23:00:25+03:00] MAPPED PREVIOUS_TRACK: IR;protocol=NEC;address=0x00;command=0x4B;raw=0xB44BFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:27+03:00] PROMPT 29/45: AUDIO — اختيار الصوت AUDIO
+[2026-10-05T23:00:30+03:00] MAPPED AUDIO: IR;protocol=NEC;address=0x00;command=0x03;raw=0xFC03FF00;bits=32;candidate_label=UP_ARROW;map_status=UNVERIFIED_FOR_SG555
+[2026-10-05T23:00:31+03:00] PROMPT 30/45: REWIND — إرجاع سريع ⏪
+[2026-10-05T23:00:38+03:00] MAPPED REWIND: IR;protocol=NEC;address=0x00;command=0x09;raw=0xF609FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:40+03:00] PROMPT 31/45: SAT — القمر الصناعي SAT
+[2026-10-05T23:00:42+03:00] MAPPED SAT: IR;protocol=NEC;address=0x00;command=0x42;raw=0xBD42FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:43+03:00] PROMPT 32/45: FAST_FORWARD — تقديم سريع ⏩
+[2026-10-05T23:00:48+03:00] MAPPED FAST_FORWARD: IR;protocol=NEC;address=0x00;command=0x05;raw=0xFA05FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:50+03:00] PROMPT 33/45: NEXT_TRACK — المسار التالي ⏭
+[2026-10-05T23:00:51+03:00] MAPPED NEXT_TRACK: IR;protocol=NEC;address=0x00;command=0x4F;raw=0xB04FFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:53+03:00] PROMPT 34/45: DIGIT_1 — الرقم 1
+[2026-10-05T23:00:53+03:00] MAPPED DIGIT_1: IR;protocol=NEC;address=0x00;command=0x54;raw=0xAB54FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:55+03:00] PROMPT 35/45: DIGIT_2 — الرقم 2
+[2026-10-05T23:00:55+03:00] MAPPED DIGIT_2: IR;protocol=NEC;address=0x00;command=0x16;raw=0xE916FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:57+03:00] PROMPT 36/45: DIGIT_3 — الرقم 3
+[2026-10-05T23:00:57+03:00] MAPPED DIGIT_3: IR;protocol=NEC;address=0x00;command=0x15;raw=0xEA15FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:00:59+03:00] PROMPT 37/45: DIGIT_4 — الرقم 4
+[2026-10-05T23:01:00+03:00] MAPPED DIGIT_4: IR;protocol=NEC;address=0x00;command=0x50;raw=0xAF50FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:01+03:00] PROMPT 38/45: DIGIT_5 — الرقم 5
+[2026-10-05T23:01:02+03:00] MAPPED DIGIT_5: IR;protocol=NEC;address=0x00;command=0x12;raw=0xED12FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:03+03:00] PROMPT 39/45: DIGIT_6 — الرقم 6
+[2026-10-05T23:01:04+03:00] MAPPED DIGIT_6: IR;protocol=NEC;address=0x00;command=0x11;raw=0xEE11FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:06+03:00] PROMPT 40/45: DIGIT_7 — الرقم 7
+[2026-10-05T23:01:06+03:00] MAPPED DIGIT_7: IR;protocol=NEC;address=0x00;command=0x4C;raw=0xB34CFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:08+03:00] PROMPT 41/45: DIGIT_8 — الرقم 8
+[2026-10-05T23:01:09+03:00] MAPPED DIGIT_8: IR;protocol=NEC;address=0x00;command=0x0E;raw=0xF10EFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:10+03:00] PROMPT 42/45: DIGIT_9 — الرقم 9
+[2026-10-05T23:01:11+03:00] MAPPED DIGIT_9: IR;protocol=NEC;address=0x00;command=0x0D;raw=0xF20DFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:12+03:00] PROMPT 43/45: FAV — المفضلة FAV
+[2026-10-05T23:01:13+03:00] MAPPED FAV: IR;protocol=NEC;address=0x00;command=0x41;raw=0xBE41FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:14+03:00] PROMPT 44/45: DIGIT_0 — الرقم 0
+[2026-10-05T23:01:15+03:00] MAPPED DIGIT_0: IR;protocol=NEC;address=0x00;command=0x0C;raw=0xF30CFF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:17+03:00] PROMPT 45/45: RECALL — استرجاع القناة RECALL
+[2026-10-05T23:01:18+03:00] MAPPED RECALL: IR;protocol=NEC;address=0x00;command=0x10;raw=0xEF10FF00;bits=32;candidate_label=UNMAPPED;map_status=NO_MODEL_SPECIFIC_MAPPING
+[2026-10-05T23:01:19+03:00] === Calibration finished: 45/45 mapped ===

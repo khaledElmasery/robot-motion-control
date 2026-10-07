@@ -8,11 +8,13 @@
 4. [السلامة والاختبار](SAFETY_AND_TESTING.md): القيود وخطوات الفحص قبل طاقة المحركات.
 5. [خريطة التحكم](CONTROLLER_MAPPING.md): فهارس يد PlayStation/X360CE والأوامر التي يرسلها الجسر.
 6. [البازر والأنماط](BUZZER_MUSIC_AR.md): أوامر النغمات ومتحكم الصوت بالمقاومة المتغيرة.
-7. [شرح firmware](../src/README_AR.md): الملف الموحد وبيئات PlatformIO.
+7. [شرح Firmware](../src/README_AR.md): الملف الموحد وبيئات PlatformIO.
 8. [دليل Python](../scripts/README_AR.md): التثبيت، فحص أرقام الأزرار، والتشغيل السلكي/اللاسلكي.
-9. [مقارنة أرشيف Buzzer_Music](ARCHIVE_COMPARISON_AR.md): ما أُبقي أو استُبدل أو استُبعد من الأرشيف القديم ولماذا.
-10. [المحتوى التاريخي والرخص](HISTORICAL_CONTENT_AND_LICENSES_AR.md): الملفات القديمة في تاريخ Git وحدود تراخيصها.
-11. [استكشاف الأخطاء وإصلاحها](TROUBLESHOOTING_AR.md): تشخيص الطاقة وL298N والحساسات وUART وBluetooth والبازر بأمان.
-12. [محاكاة Wokwi](../simulation/wokwi/README_AR.md): ملفات المخطط ومسودات السيناريوهات ونتائج الفحوص؛ تشغيل المحاكاة السحابية لم يكتمل بعد.
+9. [توثيق تسجيل ريموت SG-555](IR_REMOTE_CAPTURE_AR.md): كيف جُمعت رموز الأزرار الـ45 وما حدود هذه الخريطة.
+10. [حزمة اختبار الريموت](../tools/ir-remote-verification-kit/README_AR.md): مشروع Uno مستقل لعرض اسم الزر في Serial وإعادة المعايرة اختياريًا.
+11. [مقارنة أرشيف Buzzer_Music](ARCHIVE_COMPARISON_AR.md): ما أُبقي أو استُبدل أو استُبعد من الأرشيف القديم ولماذا.
+12. [المحتوى التاريخي والرخص](HISTORICAL_CONTENT_AND_LICENSES_AR.md): الملفات القديمة في تاريخ Git وحدود تراخيصها.
+13. [استكشاف الأخطاء وإصلاحها](TROUBLESHOOTING_AR.md): تشخيص الطاقة وL298N والحساسات وUART وBluetooth والبازر بأمان.
+14. [محاكاة Wokwi](../simulation/wokwi/README_AR.md): ملفات المخطط ومسودات السيناريوهات ونتائج الفحوص؛ تشغيل المحاكاة السحابية لم يكتمل بعد.
 
 **تنبيه:** خريطة ESP32 الحالية تفترض لوحة 30-pin ذات ESP32-WROOM-32 الأصلية. ملف `platformio.ini` يوفّر بيئات Uno وESP32 bridge وESP32 standalone، لكن هذا لا يجعل الأرجل أو مستويات الجهد متطابقة بين اللوحات.
